@@ -23,9 +23,8 @@ namespace ShopV2.Controllers
             return View("PrintProduct",products);
         }
         [HttpPost]  
-        public IActionResult RemoveItem(Product qwe)
+        public IActionResult RemoveItem(int id )
         {
-            int id = 0;
             var product = _context.Products.Find(id);
             if(product != null)
             {
@@ -51,8 +50,8 @@ namespace ShopV2.Controllers
             }
             return RedirectToAction("Print");
         }
-        [Route("/print/{id}")]
         
+        [Route("/print/{id}")]
         public IActionResult ViewProduct(int id)
         {
             Product value = _context.Products.Find(id);
