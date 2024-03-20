@@ -1,0 +1,16 @@
+﻿@using ShopV2.Model
+@model List<Product>
+
+@await Html.PartialAsync("AddProduct")
+
+@foreach(var item in Model)
+{
+    <h1>@item.Id. @item.Name</h1>
+    <p>@item.Description</p>
+    <p>Цена товара: @item.Price</p>
+    <form method="post" asp-action="RemoveItem"  >
+        <input type="hidden" name="id" value="@item.Id"/>
+        <input type="submit" value="Удалить" />
+    </form>
+    <a asp-action="ViewProduct" asp-route-id="@item.Id" value="open">open</a>
+}
